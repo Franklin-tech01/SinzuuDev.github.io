@@ -6,7 +6,7 @@ require('dotenv').config();
 
 const app = express();
 const corsOptions = {
-    origin: 'http://127.0.0.1:5502', // Replace with your frontend's URL
+    origin: ['http://127.0.0.1:5502', 'https://franklin-tech01.github.io/SinzuuDev.github.io/'], // Replace with your frontend's URL
     methods: 'POST',
 };
 

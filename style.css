@@ -363,6 +363,7 @@ html {
   color: rgb(13, 16, 37);
   padding: 10px 40px;
   border-radius: 5px;
+  cursor: pointer;
   margin-bottom: 45px;
 }
 
