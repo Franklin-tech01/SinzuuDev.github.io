@@ -202,13 +202,12 @@
                     <div class="contact__section" id="contact">
                         <h3 style="color: white;">Contact Me</h3>
                         <div class="form__container">
-                            <form action="">
+                            <form action="/send-email" method="POST" >
                                 <input type="text" name="name" id="email" placeholder="Name">
-                                <input type="email"  id="email" placeholder="Email">
+                                <input type="email" id="email" name="email" placeholder="Email">
                                 <textarea name="area" id="text" cols="30" rows="10" placeholder="Input Message"></textarea>
-
+                                    <button type="submit" class="button__sumbit" id="btn1" >Submit</button>
                             </form>
-                            <a href="" class="button__sumbit" id="btn1" onclick="handleSubmit()">Submit</a>
                         </div>
 
                     </div>

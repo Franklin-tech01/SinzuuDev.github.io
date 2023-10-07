@@ -4,22 +4,19 @@ function giveInfo() {
 }
 
 // Smooth scrolling to sections
-document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-  anchor.addEventListener("click", function (e) {
-    e.preventDefault();
+document
+  .querySelectorAll('a[href^="#"]')
+  .forEach((anchor) => {
+    anchor.addEventListener("click", function (e) {
+      e.preventDefault();
 
-    document.querySelector(this.getAttribute("href")).scrollIntoView({
-      behavior: "smooth",
+      document
+        .querySelector(this.getAttribute("href"))
+        .scrollIntoView({
+          behavior: "smooth",
+        });
     });
   });
-});
-
-const btn = document.getElementById("btn1");
-btn.addEventListener("click", prevent);
-
-function prevent(e) {
-  e.preventDefault();
-}
 
 const hamburger = document.querySelector(".hamburger");
 const navLinks = document.querySelector(".nav__links");
@@ -45,3 +42,35 @@ for (let i = 0; i < text.length; i++) {
 }
 
 // contact me form
+
+document.addEventListener("DOMContentLoaded", function () {
+  function handleSubmit(event) {
+      event.preventDefault();
+      const name = document.querySelector('input[name="name"]').value;
+      const email = document.querySelector('input[name="email"]').value;
+      const message = document.querySelector('textarea[name="area"]').value;
+
+      fetch("http://localhost:3000/send-email", {
+          method: "POST",
+          headers: {
+              "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ name, email, message }),
+      })
+          .then((response) => response.json())
+          .then((data) => {
+              if (data.success) {
+                  alert(data.message);
+              } else {
+                  alert("Failed to send email. Please try again later.");
+              }
+          })
+          .catch((error) => {
+              console.error(error);
+              alert("An error occurred while sending the email. Please try again later.");
+          });
+  }
+
+  const form = document.querySelector('form');
+  form.addEventListener("submit", handleSubmit);
+});
